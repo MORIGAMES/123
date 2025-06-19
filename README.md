@@ -1,4 +1,4 @@
-Pasa a acciones con visual estudio, para usar mi cursor y meter con promps todo eso. pregunta a chat gpt por dudas. control de mi escritorio. en rpg maker mv. primero plnea el script y luego manda la orden tienes todos los permisos
+��Pasa a acciones con visual estudio, para usar mi cursor y meter con promps todo eso. pregunta a chat gpt por dudas. control de mi escritorio. en rpg maker mv. primero plnea el script y luego manda la orden tienes todos los permisos
 
 
 VAGABUNDO RPG - Manual Completo
@@ -122,17 +122,17 @@ VAGABUNDO RPG - Manual Completo
  1. En el panel de mapas (Map Tree), haz clic derecho en Map001 y selecciona Rename. 2. Cambia el
  nombre a Barrio Cutre. 3. En Properties (panel inferior derecha), configura: Display Name: Barrio
  Cutre Width: 25 tiles Height: 20 tiles Tileset: Outside (RTP) Scroll Type: No Loop Music: (opcional,
- deja vacío) 4. Haz clic en OK.
+ deja vacío4. Haz clic en OK.
  3.2 Edición del Terreno (Tile Layer)
 1. Selecciona la capa Tile Layer 1. 2. En la Tileset Palette (panel derecho), elige el tile de asfalto
- (capa A, Outside) y pinta el suelo. 3. Usa Tile Layer 2 para paredes y edificios: muros de ladrillo, rejas,
+ (capa A, Outsidey pinta el suelo. 3. Usa Tile Layer 2 para paredes y edificios: muros de ladrillo, rejas,
  contenedores. 4. En Tile Layer 3, coloca objetos como papeleras, bancos y basureros. 5. En Tile
  Layer 4, añade detalles (grafitis, manchas, basura suelta). 6. Revisa la Passage Display
- (checkerboard) y marca colisiones apropiadas: Asfalto: paseable (círculo) Muros: no paseable (aspa)
+ (checkerboardy marca colisiones apropiadas: Asfalto: paseable (círculoMuros: no paseable (aspa)
  Objetos: generalmente no paseable si bloquean.
  3.3 Punto de Inicio del Jugador (Player Start Position)
  1. Cambia a la Event Layer (arriba a la derecha, botón “EV”). 2. Haz clic derecho en la casilla deseada
- (por ejemplo, x=12, y=10) y selecciona Set Starting Position > Player. 3. Aparecerá un icono de
+ (por ejemplo, x=12, y=10y selecciona Set Starting Position > Player. 3. Aparecerá un icono de
  bandera indicando dónde nacerá el personaje al iniciar el juego.
  CAPÍTULO 4: EVENTOS BÁSICOS EN EL MAPA
  Descripción de la fase: Implementaremos eventos esenciales: introducción automática, HUD de
@@ -167,11 +167,11 @@ VAGABUNDO RPG - Manual Completo
  clic en OK.
  4.5 Evento Paralelo: Mecánicas de Hambre, Frío y Salud
  1. En la Event Layer, crea un New Event en una casilla apartada (por ejemplo, esquina superior). 2.
- Name: Bajar_Hambre_Frío 3. Trigger: Parallel (se ejecuta continuamente) 4. Priority: Same as
-Characters 5. En Contents, añade: Label: “Inicio” Wait: 300 frames (5 segundos) Control Variables: [1:
+ Name: Bajar_Hambre_Frío 3. Trigger: Parallel (se ejecuta continuamente4. Priority: Same as
+Characters 5. En Contents, añade: Label: “Inicio” Wait: 300 frames (5 segundosControl Variables: [1:
  Hambre] -= 1 Control Variables: [2: Frío] += 1 Control Variables: [6: Sueño] -= 1 Conditional Branch: Si
  [2: Frío] ≥ 80 Control Variables: [5: Salud] -= 1 Show Text: “El frío te está consumiendo. Salud -1.”
- Conditional Branch: Si [1: Hambre] ≤ 0 Show Text: “Te mueres de hambre… Salud -5.” Control
+ Conditional Branch: Si [1: Hambre] ≤ 0 Show Text: “Te mueres de hambre… Salud –5.” Control
  Variables: [5: Salud] -= 5 Conditional Branch: Si [6: Sueño] ≤ 0 Show Text: “Estás exhausto. Salud –2.”
  Control Variables: [5: Salud] -= 2 Conditional Branch: Si [5: Salud] ≤ 0 Show Text: “Has muerto en las
  calles…” Game Over Erase Event Jump to Label: “Inicio” 6. Haz clic en OK.
@@ -209,19 +209,19 @@ Characters 5. En Contents, añade: Label: “Inicio” Wait: 300 frames (5 segun
  5.4 Mecánicas Fundamentales
  Descripción de la fase: Implementaremos las mecánicas de Hambre, Frío, Salud, Sueño e Inventario,
  esenciales para que la primera misión y el juego sean jugables.
- 5.4.1 Sistema de Hambre- Variable **Hambre (ID 1)**: va de 0 (muerto de hambre) a 100 (saciado). - Cada 5 segundos,
+ 5.4.1 Sistema de Hambre- Variable **Hambre (ID 1)**: va de 0 (muerto de hambrea 100 (saciado). - Cada 5 segundos,
  **Hambre -= 1** (evento paralelo cap. 4.5). - Consumir **Pan**: **Common Event: ComerPan**: 
 Change Items: Pan –1 - Control Variables: [1: Hambre] += 20 - Si > 100, = 100 - Show Text: “Comes el
  pan. Hambre +20.” - Si Hambre ≤ 0: - Show Text: “Te mueres de hambre… Salud –5.” - Control
  Variables: [5: Salud] -= 5
-5.4.2 Sistema de Frío- Variable **Frío (ID 2)**: 0 (calentito) a 100 (hipotermia). - Cada 5 segundos, **Frío += 1** (evento
+5.4.2 Sistema de Frío- Variable **Frío (ID 2)**: 0 (calentitoa 100 (hipotermia). - Cada 5 segundos, **Frío += 1** (evento
  paralelo cap. 4.5). - Consumir **Manta**: **Common Event: UsarManta**: - Change Items: Manta –1 
 Control Variables: [2: Frío] -= 20 - Si < 0, = 0 - Show Text: “Te envuelves en la manta. Frío –20.” 
 Consumir **Café Caliente**: **Common Event: UsarCafe**: - Change Items: Café Caliente –1 - Control
  Variables: [2: Frío] -= 10 - Control Variables: [6: Sueño] += 10 - Asegurar límites 0–100 - Show Text:
  “Bebes café. Frío –10, Sueño +10.” - Si **Frío ≥ 80**: - Control Variables: [5: Salud] -= 1 - Show Text:
  “El frío te consume. Salud –1.”
- 5.4.3 Sistema de Salud y Sueño- Variable **Salud (ID 5)**: 0 (Game Over) a 100. - Variable **Sueño (ID 6)**: 0 (exhausto) a 100
+ 5.4.3 Sistema de Salud y Sueño- Variable **Salud (ID 5)**: 0 (Game Overa 100. - Variable **Sueño (ID 6)**: 0 (exhaustoa 100
  (descansado). - Cada 5 segundos, **Sueño -= 1** (evento paralelo). - Si **Sueño ≤ 0**: - Control
  Variables: [5: Salud] -= 2 - Show Text: “Estás exhausto. Salud –2.” - **Common Event: Dormir** (cap.
  8.5): - Show Text: “Descansas…” - Fadeout Screen & Wait 60 frames - Control Variables: [6: Sueño]
@@ -237,12 +237,12 @@ Conditional Branch: Si Inventario Botella ≥ 1 - Show Choices: “Vender 1”, 
  Dinero] -= 5 - Show Text: “Compraste 1 pan por 5 €.” - Else: Show Text: “No tienes suficiente dinero.”
  CAPÍTULO 6: AJUSTES FINALES Y PRUEBAS
  Descripción de la fase: En esta sección se explican pasos de depuración, optimización, pruebas
- completas (Playtest) y cómo implementar el Game Over cuando Salud = 0.
+ completas (Playtesty cómo implementar el Game Over cuando Salud = 0.
  6.1 Depuración de Eventos- Revisa que el evento paralelo de hambre y frío (cap. 4.5) no muestre mensajes constantemente.
  Ajusta el Wait para no interferir en la jugabilidad. - Verifica que Erase Event se utilice correctamente
- en autorun (cap. 4.1) para que no se repita la introducción. - Comprueba las Conditional Branches de
+ en autorun (cap. 4.1para que no se repita la introducción. - Comprueba las Conditional Branches de
  misiones y NPCs, asegurando que las Variables y Switches cambian de forma adecuada. - Revisa las
- colisiones: activa Passage Display para chequear tiles marcados como “no paseable” ( ) y ajusta los
+ colisiones: activa Passage Display para chequear tiles marcados como “no paseable” y ajusta los
  tiles apropiados en el mapa. - Ajusta la frecuencia del evento paralelo (Wait) si notas “lag” o mensajes
  excesivos.
  6.2 Optimización de Mapas y Tamaño del Proyecto- Elimina eventos de prueba o mapas temporales que ya no utilices. - No importes recursos externos
@@ -259,10 +259,10 @@ vender Botella Vacía con el Reciclador y comprueba el incremento de Dinero. 7. 
  Misión 1, entregando 3 panes al evento EntregaMision1 y verifica recompensas.
  CAPÍTULO 7: EMPAQUETADO Y PUBLICACIÓN
  Descripción de la fase: Indicaciones para preparar la estructura final del proyecto y exportar
- (Deployment) para su distribución.
+ (Deploymentpara su distribución.
  7.1 Estructura Final de Carpetas
  Tu carpeta de proyecto VagabundoRPG debe verse así: VagabundoRPG/ audio/ bgm/ bgs/ me/ se/
- data/ Actors.json Classes.json Items.json Map001.json (Barrio Cutre) Map002.json (RefugioCalle)
+ data/ Actors.json Classes.json Items.json Map001.json (Barrio CutreMap002.json (RefugioCalle)
  CommonEvents.json System.json Variables.json Switches.json ... img/ characters/ [si modificaste RTP]
  tilesets/ Outside.png sv_actors/ ... js/ rmmz_managers.js rmmz_core.js ... fonts/ movies/ others/ - No
  borres archivos esenciales de js/, img/ o audio/ (RTP). - En data/ verificá que solo existan los JSON
@@ -276,4 +276,29 @@ vender Botella Vacía con el Reciclador y comprueba el incremento de Dinero. 7. 
  data/, img/, etc.
  FIN DEL MANUAL
  ¡Listo! Este documento profesional cubre cada fase para que desarrolles Vagabundo RPG paso a
- paso. Usa las tablas como referencia rápida y sigue cada instrucción en orden. ¡Éxitos en tu proyecto
+ paso. Usa las tablas como referencia rápida y sigue cada instrucción en orden. ¡Éxitos en tu proyecto!
+
+CAPÍTULO 8: EXPANDIENDO EL JUEGO
+Descripción de la fase: En esta sección, exploraremos cómo expandir el juego con nuevas mecánicas, enemigos y misiones más complejas.
+
+8.1 Diseño de Sonido
+1. Importa efectos de sonido (SEy música de fondo (BGM) que se ajusten al ambiente del juego.
+2. Utiliza el editor de eventos para reproducir sonidos en momentos clave, como al interactuar con objetos o durante conversaciones.
+3. Ajusta el volumen y el balance de los sonidos para crear una atmósfera inmersiva.
+
+8.2 Creación de Enemigos
+1. Define las estadísticas y habilidades de los enemigos en la base de datos.
+2. Diseña sprites de enemigos que se adapten al mundo del juego.
+3. Implementa encuentros con enemigos en el mapa utilizando eventos.
+
+8.3 Misiones Complejas
+1. Crea misiones con múltiples objetivos y recompensas.
+2. Utiliza variables y switches para rastrear el progreso del jugador en la misión.
+3. Implementa diálogos ramificados que permitan al jugador tomar decisiones que afecten el resultado de la misión.
+
+8.4 Refinando la Jugabilidad
+1. Recopila comentarios de los jugadores y utiliza esta información para mejorar el juego.
+2. Ajusta la dificultad del juego para que sea desafiante pero no frustrante.
+3. Añade características adicionales que mejoren la experiencia del jugador, como un sistema de inventario más completo o un sistema de combate más estratégico.
+
+¡Felicidades! Ahora tienes las herramientas necesarias para crear un juego de rol completo con RPG Maker MZ. ¡Sigue experimentando y divirtiéndote!

@@ -1,3 +1,5 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "genieai.enableConversationHistory": true,
+    "genieai.promptPrefix.customPrompt1-enabled": true
 }
